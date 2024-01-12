@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Medicines</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            color: rgb(22, 5, 5);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        .medicine-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .medicine-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .medicine-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .edit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+    
+
+        .delete-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button {
+            background-color: #304ee4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button-container {
+            display: flex;
+            gap:20px;
+            margin-bottom: 20px;
+        }
+    
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>welcome {{ request.user.username }}</h1>
+    </header>
+
+    <div class="container">
+        <div class="button-container">
+            <a href="{% url 'admin_dashboard' %}"><button class="button" >Upload Medicine</button><br><br></a>
+            <a href="{% url 'user' %}"><button class="button" >View user</button></a>
+            <a href="{% url 'logout_user' %}"><button class="button" style="background-color: red;" >Logout</button></a><br><br>
+        </div>
+        <div class="medicine-grid">
+            <!-- Example medicine card, repeat for each medicine -->
+            {% for i in medicine%}
+            <div class="medicine-card">
+                <img class="medicine-image" src="path/to/medicine_image.jpg" alt="Medicine Image">
+                <h3>{{i.medicine_name}}</h3>
+                <p>Company: {{i.company_name}}</p>
+                <p>Expire Date: {{i.expire_date}}</p>
+                <!-- Add more details as needed -->
+                <a href="{% url 'update_medicine' medicine_id=i.id %}"><button class="edit-button">Edit</button></a>
+                <a href="{% url 'delete_medicine' medicine_id=i.id %}"><button class="delete-button">Delete</button></a>
+            </div>
+            {% endfor %}
+            <!-- Repeat the above card structure for each medicine -->
+        </div>
+    </div>
+</body>
+</html>
