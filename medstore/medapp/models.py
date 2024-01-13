@@ -13,7 +13,7 @@ class Profile(models.Model):
 class Medicine(models.Model):
     medicine_name = models.CharField(max_length=255)
     company_name = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='medicine_images/', blank=True)
+    image = models.ImageField(upload_to='pics', blank=True)
     expire_date = models.DateField()
 
     def __str__(self):

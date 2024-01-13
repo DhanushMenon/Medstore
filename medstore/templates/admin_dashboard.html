@@ -98,7 +98,7 @@
 
         <div id="uploadForm" class="form-container">
             <h2>Upload Medicine</h2>
-            <form id="medicineForm" action="{% url 'upload_medicine' %}" method="post">
+            <form id="medicineForm"  method="post" enctype="multipart/form-data">
                {% csrf_token %}
                 <div class="form-group">
                     <label for="medicineName">Medicine Name:</label>

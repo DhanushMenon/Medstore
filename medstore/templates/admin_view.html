@@ -106,7 +106,7 @@
             <!-- Example medicine card, repeat for each medicine -->
             {% for i in medicine%}
             <div class="medicine-card">
-                <img class="medicine-image" src="path/to/medicine_image.jpg" alt="Medicine Image">
+                <img class="medicine-image" src="{{i.image.url}}" alt="Medicine Image">
                 <h3>{{i.medicine_name}}</h3>
                 <p>Company: {{i.company_name}}</p>
                 <p>Expire Date: {{i.expire_date}}</p>

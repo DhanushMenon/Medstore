@@ -78,11 +78,8 @@ WSGI_APPLICATION = 'medstore.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'medstore',
-        'USER': 'postgres',
-        'PASSWORD': 'admin1',
-        'HOST': 'localhost'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",  # Assumes you want to store the SQLite database file in your project's base directory
     }
 }
 
@@ -122,7 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 
 # Default primary key field type

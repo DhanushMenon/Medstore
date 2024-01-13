@@ -44,7 +44,7 @@ def login_user(request):
 
         if user is not None:
             auth_login(request,user)
-            if user.username == "dmeno":
+            if user.username == "admin1":
                 return redirect('admin_dashboard')
             else:
                 return redirect('index')  # Redirect to your home page or any desired view
@@ -78,6 +78,7 @@ def upload_medicine(request):
         company_name = request.POST.get('companyName')
         image = request.FILES.get('medicineImage')
         expire_date = request.POST.get('expireDate')
+        print(image)
 
         new_medicine = Medicine(
             medicine_name=medicine_name,
